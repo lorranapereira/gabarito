@@ -1,0 +1,22 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as _ %}
+{% block content %}
+    {% if(tipo=="inserir") %}
+        <h1>Inserir aluno</h1>
+        <form action="{{ url_for('tratandoInserir') }}" method="POST">
+            {{ _.form_field(form.login) }}
+            {{ _.form_field(form.idade) }}
+            {{ _.form_field(form.enviar, class="btn btn-primary mb-2")}}
+        </form>
+    {% endif %}
+    {% if(tipo=="alterar") %}
+        <h1>Alterar aluno</h1>
+        <form action="{{ url_for('tratandoAlterar') }}" method="POST">
+            {{ _.form_field(form.codigo,value=aluno.codigo,readonly=True) }}
+            {{ _.form_field(form.login,value=aluno.login) }}
+            {{ _.form_field(form.idade,value=aluno.idade) }}
+            {{ _.form_field(form.enviar, class="btn btn-primary mb-2")}}
+        </form>
+    {% endif %}
+    <br><button><a href="/">Voltar para a lista</a></button>
+{% endblock %}

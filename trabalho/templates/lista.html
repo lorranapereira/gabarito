@@ -1,0 +1,23 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as _ %}
+{% block content %}
+    <h1 class="title">lista de pessoas</h1>
+    <table class="tabela">
+        <tr>
+            <td>codigo</td>
+            <td>Login</td>
+            <td>Idade</td>
+        </tr>
+        {% for linha in lista %}
+        <tr>
+            <td>{{ linha.codigo }}</td>
+            <td>{{ linha.login }}</td>
+            <td>{{ linha.idade }}</td>
+            <td><button class="lista"><a href="/deletar/{{ linha.codigo }}">Deletar</a></button></td>
+            <td><button class="lista"><a href="/alterar/{{ linha.codigo }}">Alterar</a></button></td>
+        </tr>
+        {% endfor %}
+    </table><br><br>
+    <button><a href="/inserir">Inserir alunos</a></button>
+    </div>
+{% endblock %}
